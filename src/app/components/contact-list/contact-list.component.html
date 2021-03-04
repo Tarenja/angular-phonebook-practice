@@ -2,8 +2,10 @@
 <hr>
 <div class="list-group">
     <div class="list-group-item" *ngFor="let c of contacts">
-        <h5>{{ c | fullName }}</h5>
-        <p>{{ c.email }}</p>
+        <div class="col-sm-4">
+            <h5 [routerLink]="[ '/contact-details', c.id ]">{{ c | fullName }}</h5>
+            <p>{{ c.email }}</p>
+        </div>
     </div>
 </div>
 
