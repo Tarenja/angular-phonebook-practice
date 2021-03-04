@@ -1,0 +1,45 @@
+<h3>Add a New Contact</h3>
+<p>Enter details below</p>
+<hr>
+<form class="form" #f1="ngForm">
+    <div class="form-group">
+        <label for="firstname">First Name</label>
+        <input required minlength="2" type="text" class="form-control" id="firstname" name="firstname"
+            [(ngModel)]="contact.firstname" #firstname="ngModel">
+
+        <div class="err" *ngIf="firstname.dirty && firstname.invalid">
+            <div *ngIf="firstname.errors['required']">First name is required</div>
+            <div *ngIf="firstname.errors['minlength']">Please enter at least 2 characters</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="lastname">Last Name</label>
+        <input type="text" class="form-control" id="lastname" name="lastname" [(ngModel)]="contact.lastname">
+    </div>
+    <div class="form-group">
+        <label for="gender">Gender</label>
+        <label><input type="radio" name="gender" value="yes" [(ngModel)]="contact.gender">Yes</label>
+        <label><input type="radio" name="gender" value="no" [(ngModel)]="contact.gender">No</label>
+    </div>
+    <div class="form-group">
+        <label for="dob">Date of Birth (YYYY-MM-DD)</label>
+        <input type="text" class="form-control" id="dob" name="dob" [(ngModel)]="contact.dob">
+    </div>
+    <div class="form-group">
+        <label for="email">Email Address</label>
+        <input required #email="ngModel" type="text" class="form-control" id="email" name="email"
+            [(ngModel)]="contact.email">
+    </div>
+    <div class="form-group">
+        <label for="phone">Phone number</label>
+        <input required #phone="ngModel" pattern="\d{10,12}" type="text" class="form-control" id="phone" name="phone"
+            [(ngModel)]="contact.phone">
+        <div class="err" *ngIf="phone.dirty && phone.invalid">
+            <div *ngIf="phone.errors['required']">Phone number is required</div>
+            <div *ngIf="phone.errors['pattern']">Please enter 10 to 12 numbers</div>
+        </div>
+    </div>
+
+    <button class="btn btn-{{f1.invalid ? 'danger' : 'primary'}}" (click)="addContact()" [disabled]="f1.invalid">Add
+        Contact</button>
+</form>
