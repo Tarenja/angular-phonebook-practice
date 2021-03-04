@@ -1,7 +1,7 @@
 export class Contact {
   id: number;
-  firstName: string;
-  lastName: string;
+  firstname: string;
+  lastname: string;
   gender: string = 'Female';
   email: string;
   phone: string;

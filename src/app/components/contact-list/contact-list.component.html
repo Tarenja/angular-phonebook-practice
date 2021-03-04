@@ -1,0 +1,10 @@
+<h3>List of Contacts</h3>
+<hr>
+<div class="list-group">
+    <div class="list-group-item" *ngFor="let c of contacts">
+        <h5>{{ c | fullName }}</h5>
+        <p>{{ c.email }}</p>
+    </div>
+</div>
+
+<button class="btn btn-primary" (click)="loadMore()">Load More</button>

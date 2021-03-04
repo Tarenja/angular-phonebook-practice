@@ -9,7 +9,7 @@ export class FullNamePipe implements PipeTransform {
     if (!contact) {
       return '';
     }
-    const title = contact.gender === 'No' ? 'Sparkly' : 'Shiny';
-    return `${title} ${contact.firstName} ${contact.lastName}`;
+    const title = contact.gender === 'no' ? 'Sparkly' : 'Shiny';
+    return `${title} ${contact.firstname} ${contact.lastname}`;
   }
 }

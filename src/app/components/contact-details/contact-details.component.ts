@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PhonebookService } from 'src/app/services/phonebook.service';
 import { Contact } from '../../model/contact';
 
 @Component({
@@ -7,18 +8,17 @@ import { Contact } from '../../model/contact';
   styleUrls: ['./contact-details.component.css'],
 })
 export class ContactDetailsComponent implements OnInit {
-  contact: Contact;
-
-  constructor() {}
+  contact: Contact = new Contact();
+  // if dependencies are mentioned here, Angular will inject them for us
+  constructor(private service: PhonebookService) {}
 
   ngOnInit(): void {
-    this.contact = new Contact();
-    this.contact.id = 1;
-    this.contact.firstName = 'Happy';
-    this.contact.lastName = 'Unicorn';
-    this.contact.email = 'random@email.com';
-    this.contact.phone = '012345678';
-    this.contact.gender = 'No';
-    this.contact.dob = '1964-01-20';
+    // this is a way, but shouldn't do this, because PhonebookService might have all sorts of other dependencies
+    // let service = new PhonebookService();
+    // this.contact = service.getContactDetails(1);
+    // do it like this:
+    this.service
+      .getContactDetails(1)
+      .subscribe((data) => (this.contact = data));
   }
 }
