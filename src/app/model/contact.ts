@@ -2,7 +2,7 @@ export class Contact {
   id: number;
   firstname: string;
   lastname: string;
-  gender: string = 'Female';
+  gender: string = 'no';
   email: string;
   phone: string;
   dob?: string;
